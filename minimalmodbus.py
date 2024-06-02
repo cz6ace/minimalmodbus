@@ -1852,7 +1852,7 @@ def _extract_payload(
 
     if mode == MODE_ASCII:
         # Validate the ASCII header and footer.
-        if response[_BYTEPOSITION_FOR_ASCII_HEADER].to_bytes(1, "big") != _ASCII_HEADER:
+        if response[_BYTEPOSITION_FOR_ASCII_HEADER].to_bytes(1, "big") != b">" and response[_BYTEPOSITION_FOR_ASCII_HEADER].to_bytes(1, "big") != _ASCII_HEADER:
             raise InvalidResponseError(
                 "Did not find header ({!r}) as start ".format(_ASCII_HEADER)
                 + "of ASCII response. The plain response is: {!r}".format(response)
